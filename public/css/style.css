@@ -46,7 +46,7 @@ main {
 aside {
   flex: 0;
   background-color: var(--tertiary);
-  padding: 75px;
+  padding: 15px;
   text-align: left;
   color: rgb(228, 46, 1);
   font-size: 10px;

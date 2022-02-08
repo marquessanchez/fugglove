@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Gallery, Photo } = require('../models');
+// Import the custom middleware
+const withAuth = require('../utils/auth');
 
 // GET all galleries for homepage
 router.get('/', async (req, res) => {
@@ -8,18 +10,18 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Photo,
-          attributes: ['filename', 'description']
-        }
-      ]
+          attributes: ['filename', 'description'],
+        },
+      ],
     });
 
-    const Galleries= dbGalleryData.map(Gallery =>
-      Gallery.get({ plain: true })
+    const galleries = dbGalleryData.map((gallery) =>
+      gallery.get({ plain: true })
     );
-    // TODO: Add a comment describing how we pass the session to the view
+
     res.render('homepage', {
-      Galleries,
-      loggedIn: req.session.loggedIn
+      galleries,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -27,8 +29,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one Gallery
-router.get('/Gallery/:id', async (req, res) => {
+// GET one gallery
+// Use the custom middleware before allowing the user to access the gallery
+router.get('/gallery/:id', withAuth, async (req, res) => {
   try {
     const dbGalleryData = await Gallery.findByPk(req.params.id, {
       include: [
@@ -40,43 +43,41 @@ router.get('/Gallery/:id', async (req, res) => {
             'artist',
             'exhibition_date',
             'filename',
-            'description'
-          ]
-        }
-      ]
+            'description',
+          ],
+        },
+      ],
     });
 
-    const Gallery = dbGalleryData.get({ plain: true });
-    // TODO: Add a comment describing how we pass the session to the Gallery view.
-    res.render('Gallery', { Gallery, loggedIn: req.session.loggedIn });
+    const gallery = dbGalleryData.get({ plain: true });
+    res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one Photo
-router.get('/Photo/:id', async (req, res) => {
+// GET one photo
+// Use the custom middleware before allowing the user to access the photo
+router.get('/photo/:id', withAuth, async (req, res) => {
   try {
     const dbPhotoData = await Photo.findByPk(req.params.id);
 
-    const Photo = dbPhotoData.get({ plain: true });
-    // TODO: Add a comment describing how we pass the session to the Photo view.
-    res.render('Photo', { Photo, loggedIn: req.session.loggedIn });
+    const photo = dbPhotoData.get({ plain: true });
+
+    res.render('photo', { photo, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// Login route
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect to the homepage
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
-  // Otherwise, render the 'login' template
+
   res.render('login');
 });
 

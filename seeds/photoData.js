@@ -3,12 +3,12 @@ const { Photo } = require('../models');
 // Types of photos 
 const photodata = [
   {
-    title: '',
-    artist: '',
-    category: '',
+    title: 'Amy',
+    artist: 'FUGG',
+    category: 'Petite',
     store_id: 1,
-    filetitle: '',
-    description:'',
+    filetitle: 'amy.jpeg',
+    description:'Quiet but loudy personality',
   },
   {
     title: 'Cosmos Flowers',
@@ -80,6 +80,6 @@ const photodata = [
   },
 ];
 
-const seedPhoto = () => Photo.bulkCreate(photodata);
+const seedPhotos = () => Photo.bulkCreate(photodata);
 
 module.exports = seedPhotos;
