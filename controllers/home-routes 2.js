@@ -14,13 +14,11 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    
-    console.log('LOOK HERE: ', dbGalleryData)
-    const galleries = dbGalleryData.map((gallery) => {
-      return gallery.get({ plain: true })
-    }
+
+    const galleries = dbGalleryData.map((gallery) =>
+      gallery.get({ plain: true })
     );
-      console.log('galleries: ', galleries )
+
     res.render('homepage', {
       galleries,
       loggedIn: req.session.loggedIn,
@@ -42,7 +40,7 @@ router.get('/gallery/:id', withAuth, async (req, res) => {
           attributes: [
             'id',
             'title',
-            // 'artist',
+            'artist',
             'exhibition_date',
             'filename',
             'description',
@@ -52,7 +50,6 @@ router.get('/gallery/:id', withAuth, async (req, res) => {
     });
 
     const gallery = dbGalleryData.get({ plain: true });
-    console.log(gallery)
     res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);

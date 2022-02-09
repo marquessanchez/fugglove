@@ -7,29 +7,29 @@ Photo.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     brand: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     exhibition_date: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
     },
     filename: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     gallery_id: {
       type: DataTypes.INTEGER,

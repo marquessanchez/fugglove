@@ -5,8 +5,6 @@
   <!-- If the user is logged in, render the gallery content -->
   {{#if loggedIn}}
   <section class="flex-row justify-center">
-    <!-- FUGGGGGGG test -->
-    <div>FUGGGGGGG</div>
     {{#each gallery.photo as |photo|}}
     {{> photo-details}}
     {{/each}}
