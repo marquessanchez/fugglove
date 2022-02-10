@@ -20,6 +20,22 @@ body {
   background-color: var(--quatrinary);
 }
 
+.h1 {
+  color: linear-gradient(-45deg, #000000, #5a5a5a, #a8a8a8, #ffffff);
+    position: relative;
+    background-size: 400% 400%;
+    animation: change 5s ease-in-out infinite;
+}
+@keyframes change {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{ background-position: 100% 50%;
+    }
+    100%{ background-position: 0 50%;
+    }
+}
+
 a {
   color: var(--dark);
   text-decoration: none;
@@ -34,8 +50,26 @@ header {
   text-align: left;
   font-size: 10px; 
   background: rgb(221, 221, 221);
-  color: rgb(228, 46, 1);
+  color: linear-gradient(-45deg, #000000, #5a5a5a, #a8a8a8, #ffffff);
+  position: relative;
+  background-size: 400% 400%;
+  animation: color-change 5s ease-in-out infinite;
 }
+@keyframes color-change {
+  0%{
+      color: #000000;
+  }
+  25%{
+      color:#5a5a5a;
+  }
+  50%{
+    color: #a8a8a8;
+  }
+  100%{ 
+    color: #ffffff;
+  }
+}
+
 
 main {
   display: flex;
@@ -95,14 +129,14 @@ img {
   height: auto;
 }
 
-.painting {
+.photo {
   width: 50%;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
 }
 
-.painting-details {
+.photo-details {
   text-align: center;
   padding: 10px 20px;
   font-weight: bold;
@@ -127,7 +161,7 @@ img {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #577a7c;
+  background-color: #bbbbbb;
   color: var(--light);
 }
 
