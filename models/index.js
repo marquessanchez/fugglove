@@ -7,7 +7,7 @@ Gallery.hasMany(Photo, {
 });
 
 Photo.belongsTo(Gallery, {
-  foreignKey: 'gallery_id',
+  foreignKey: 'photo_id',
 });
 
 module.exports = { User, Gallery, Photo };

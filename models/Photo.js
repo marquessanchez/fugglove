@@ -15,12 +15,8 @@ Photo.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    brand: {
+    artist: {
       type: DataTypes.STRING,
-      allowNull: true,
-    },
-    exhibition_date: {
-      type: DataTypes.DATE,
       allowNull: true,
     },
     filename: {
@@ -31,10 +27,10 @@ Photo.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    gallery_id: {
+    photo_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'gallery',
+        model: 'photo',
         key: 'id',
       },
     },
@@ -46,5 +42,6 @@ Photo.init(
     modelName: 'photo',
   }
 );
+
 
 module.exports = Photo;

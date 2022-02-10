@@ -43,7 +43,7 @@ router.get('/gallery/:id', withAuth, async (req, res) => {
             'id',
             'title',
             // 'artist',
-            'exhibition_date',
+            // 'exhibition_date',
             'filename',
             'description',
           ],
@@ -83,5 +83,7 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+
 
 module.exports = router;
