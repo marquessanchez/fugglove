@@ -1,13 +1,14 @@
+{{!-- TODO: Add a comment describing the functionality of the conditional --}}
 {{#if loggedIn}}
 <section class="photo">
-  <p>PRINTS AVAILABLE TO DOWNLOAD</p>
-  <a href="/images/{{photo.filename}}" download="{{photo.filename}}">
-  <img src="/images/{{photo.filename}}" alt="{{photo.description}}"
+  <img src="/images/{{photo.filename}}" alt="{{photo.description}}">
   <div class="photo-details">
-  </a>
-  </div>
-  
+    <h3>{{photo.title}}</h3>
+    <p>By: {{photo.artist}}</p>
+    <p>Prints avaialble: {{ format_date photo.exhibition_date}}</p>
+    </div>
 </section>
+{{!-- TODO: Add a comment describing the else condition below --}}
 {{else}}
 <a href="/login">You must login first to view these photos</a>
 {{/if}}
