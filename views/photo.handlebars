@@ -1,10 +1,10 @@
 {{#if loggedIn}}
 <section class="photo">
-  <img src="/images/{{photo.filename}}" alt="{{photo.description}}">
+  <p>PRINTS AVAILABLE TO DOWNLOAD</p>
+  <a href="/images/{{photo.filename}}" download="{{photo.filename}}">
+  <img src="/images/{{photo.filename}}" alt="{{photo.description}}"
   <div class="photo-details">
-    <h3>{{photo.title}}</h3>
-    <p>By: {{photo.artist}}</p>
-    <p>Prints avaialble: {{ photo.exhibition_date}}</p>
+  </a>
   </div>
   
 </section>
