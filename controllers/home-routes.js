@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-    
+
     console.log('LOOK HERE: ', dbGalleryData)
     const galleries = dbGalleryData.map((gallery) => {
       return gallery.get({ plain: true })
